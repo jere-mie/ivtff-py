@@ -38,7 +38,7 @@ def parse_transliteration(text: str) -> dict:
 
         # replacing high-ascii identifiers with the actual high-ascii character
         for mat in re.finditer(RE_HIGH_ASCII, trans_text):
-            trans_text = re.sub(mat.group(0), chr(int(mat.group(1))), trans_text)
+            trans_text = trans_text.replace(mat.group(0), chr(int(mat.group(1))))
 
         # replacing uncertain translations with the first option
         for mat in re.finditer(RE_UNCERTAIN_READING, trans_text):
@@ -51,6 +51,7 @@ def parse_transliteration(text: str) -> dict:
             else:
                 trans_text = trans_text.replace(mat.group(0), options[0])
 
+        print(f'{match.group(1)}|{trans_text}')
         # adding this text to the current page's contents
         page = match.group(1)
         # each locus should be separated by a new line to indicate it as a unique locus
