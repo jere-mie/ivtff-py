@@ -51,7 +51,6 @@ def parse_transliteration(text: str) -> dict:
             else:
                 trans_text = trans_text.replace(mat.group(0), options[0])
 
-        print(f'{match.group(1)}|{trans_text}')
         # adding this text to the current page's contents
         page = match.group(1)
         # each locus should be separated by a new line to indicate it as a unique locus
