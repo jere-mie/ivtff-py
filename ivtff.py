@@ -36,7 +36,20 @@ def parse_transliteration(text: str) -> dict:
         trans_text = re.sub(RE_INLINE_COMMENT, '', trans_text)
         trans_text = re.sub(r'[.,]', ' ', trans_text)
 
-        # NOTE: still need to fix upper-ascii characters and uncertain translations
+        # replacing high-ascii identifiers with the actual high-ascii character
+        for mat in re.finditer(RE_HIGH_ASCII, trans_text):
+            trans_text = re.sub(mat.group(0), chr(int(mat.group(1))), trans_text)
+
+        # replacing uncertain translations with the first option
+        for mat in re.finditer(RE_UNCERTAIN_READING, trans_text):
+            options = mat.group(1).split(':')
+
+            # sometimes to denote two possible one-character readings we use [ab] instead of [a:b]
+            # so in this case we simply return the first character
+            if len(options) < 2:
+                trans_text = trans_text.replace(mat.group(0), mat.group(1)[0])
+            else:
+                trans_text = trans_text.replace(mat.group(0), options[0])
 
         # adding this text to the current page's contents
         page = match.group(1)
