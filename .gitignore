@@ -1,4 +1,21 @@
-# Byte-compiled / optimized / DLL files
+# Common Transliteration files
+temp.txt
+CD_ivtff_1a.txt
+FG_ivtff_1b.txt
+FG_ivtff_1c.txt
+FG_ivtff_1e.txt
+GC_ivtff_0b.txt
+GC_ivtff_0c.txt
+GC_ivtff_1a.txt
+GC_ivtff_1b.txt
+IT_ivtff_0c.txt
+IT_ivtff_0d.txt
+IT_ivtff_1a.txt
+ZL_ivtff_1r.txt
+ZL_ivtff_1z.txt
+ZL_ivtff_2a.txt
+ZL_ivtff_2b.txt
+
 __pycache__/
 *.py[cod]
 *$py.class
