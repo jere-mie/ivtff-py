@@ -56,10 +56,3 @@ def parse_transliteration(text: str) -> dict:
         # each locus should be separated by a new line to indicate it as a unique locus
         out[page] = out.get(page, '') + trans_text + '\n'
     return out
-
-
-# temporary test script while I'm developing this tool
-if __name__ == "__main__":
-    with open('temp.txt', 'r', encoding='utf8') as f:
-        data = f.read()
-    parse_transliteration(data)
